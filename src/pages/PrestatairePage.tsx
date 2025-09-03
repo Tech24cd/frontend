@@ -64,8 +64,6 @@ const PrestatairePage: React.FC = () => {
   const [teardownDateTime, setTeardownDateTime] = useState<string>("");
   const [contactName, setContactName] = useState<string>("");
   const [contactPhone, setContactPhone] = useState<string>("");
-  const [selectedPrestataireId, setSelectedPrestataireId] =
-    useState<string>("");
   const [intervenant1Id, setIntervenant1Id] = useState<string>("");
   const [intervenant2Id, setIntervenant2Id] = useState<string>("");
   const [transporteur, setTransporteur] = useState<string>("");
@@ -184,7 +182,7 @@ const PrestatairePage: React.FC = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // si besoin d’auth
+          credentials: "include",
           body: JSON.stringify({
             missionId: mission.id,
             emails,
@@ -203,8 +201,15 @@ const PrestatairePage: React.FC = () => {
         throw new Error(text || "Erreur serveur");
       }
     } catch (err: unknown) {
-      alert("Erreur lors de l'envoi de la notification : " + err.message);
-      console.error(err);
+      // Ici on vérifie si err est bien un Error avant d'utiliser .message
+      if (err instanceof Error) {
+        alert("Erreur lors de l'envoi de la notification : " + err.message);
+        console.error(err);
+      } else {
+        // Pour les cas inattendus où err n'est pas un objet Error
+        alert("Erreur lors de l'envoi de la notification");
+        console.error(err);
+      }
     }
   };
 
@@ -239,7 +244,6 @@ const PrestatairePage: React.FC = () => {
     formData.append("teardownDateTime", teardownDateTime);
     formData.append("contactName", contactName);
     formData.append("contactPhone", contactPhone);
-    formData.append("prestataireId", selectedPrestataireId);
     formData.append("intervenant1Id", intervenant1Id || "");
     formData.append("intervenant2Id", intervenant2Id || "");
     formData.append("transporteur", transporteur);
@@ -432,21 +436,6 @@ const PrestatairePage: React.FC = () => {
             value={contactPhone}
             onChange={(e) => setContactPhone(e.target.value)}
           />
-
-          <label>
-            Prestataire
-            <select
-              value={selectedPrestataireId}
-              onChange={(e) => setSelectedPrestataireId(e.target.value)}
-            >
-              <option value="">-- Aucun --</option>
-              {prestatairesList.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.nom}
-                </option>
-              ))}
-            </select>
-          </label>
 
           {/* Intervenants */}
           <label>
