@@ -86,7 +86,7 @@ const MissionsTable: React.FC = () => {
 
   // Récupération des missions
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/missions", {
+    fetch(`${API_BASE_URL}/api/missions`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -176,7 +176,7 @@ const MissionsTable: React.FC = () => {
     formData.append("missionId", missionId.toString());
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/upload", {
+      const response = await fetch(`${API_BASE_URL}/api/upload`, {
         method: "POST",
         body: formData,
       });
