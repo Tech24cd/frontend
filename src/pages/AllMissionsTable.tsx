@@ -59,7 +59,7 @@ const MissionsTable: React.FC = () => {
 
   // Fonction pour télécharger tous les fichiers liés à une mission
   const handleDownloadAllFiles = (missionId: number) => {
-    fetch(`http://localhost:3000/api/missions/${missionId}/download-zip`, {
+    fetch(`${API_BASE_URL}/api/missions/${missionId}/download-zip`, {
       method: "GET",
       credentials: "include",
     })
