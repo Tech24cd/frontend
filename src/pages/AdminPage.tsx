@@ -94,7 +94,7 @@ const AdminPage: React.FC = () => {
 
   // Chargement techniciens
   useEffect(() => {
-    fetch("${API_BASE_URL}/api/users/techniciens")
+    fetch("${API_BASE_URL}/api/users/techniciens``)
       .then((res) => res.json())
       .then((data: UserFromBackend[]) => {
         const techniciens = data.map((user) => ({
@@ -109,7 +109,7 @@ const AdminPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch("${API_BASE_URL}/api/users/prestataires", {
+    fetch(`${API_BASE_URL}/api/users/prestataires`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -120,7 +120,7 @@ const AdminPage: React.FC = () => {
   }, []);
   // Chargement missions
   useEffect(() => {
-    fetch("${API_BASE_URL}/api/missions/admin", {
+    fetch(`${API_BASE_URL}/api/missions/admin`, {
       credentials: "include",
     })
       .then((res) => {
@@ -193,7 +193,7 @@ const AdminPage: React.FC = () => {
 
       // Requête vers ton API backend pour envoyer le mail
       const response = await fetch(
-        "${API_BASE_URL}/api/notifications/send-mission",
+        `${API_BASE_URL}/api/notifications/send-mission`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -265,7 +265,7 @@ const AdminPage: React.FC = () => {
 
     const url =
       editingId === null
-        ? "${API_BASE_URL}/api/missions"
+        ? `${API_BASE_URL}/api/missions`
         : `${API_BASE_URL}/api/missions/${editingId}`;
     const method = editingId === null ? "POST" : "PUT";
 
