@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 type MissionStatus = "non débuté" | "montage" | "démontage" | "terminé";
 
