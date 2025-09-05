@@ -44,7 +44,7 @@ const Planning = () => {
     }, []);
     // Puis, fetchMissions, sans dépendance sur updateEvents (car utilisé en conjonction avec useCallback)
     const fetchMissions = useCallback(() => {
-        fetch(`${API_BASE_URL}/api/missions/prestataire", {
+        fetch(`${API_BASE_URL}/api/missions/prestataire`, {
             credentials: "include",
         })
             .then((res) => res.json())
