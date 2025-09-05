@@ -1,8 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
-
 // Statuts
 const STATUTS = [
   "Tous",
@@ -49,7 +47,7 @@ const MissionsTable = () => {
   const [filesByMission, setFilesByMission] = useState({});
   // Récupération des missions
   useEffect(() => {
-    fetch("${API_BASE_URL}/api/missions/prestataire`, {
+    fetch(`${API_BASE_URL}/api/missions/prestataire`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -128,7 +126,7 @@ const MissionsTable = () => {
     });
     formData.append("missionId", missionId.toString());
     try {
-      const response = await fetch("${API_BASE_URL}/api/upload`, {
+      const response = await fetch(`${API_BASE_URL}/api/upload`, {
         method: "POST",
         body: formData,
       });
