@@ -54,7 +54,7 @@ const TechnicienPage: React.FC = () => {
   useEffect(() => {
     const fetchMissions = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/missions", {
+        const response = await fetch(`${API_BASE_URL}/api/missions`, {
           credentials: "include",
         });
         if (!response.ok) throw new Error("Erreur lors du chargement");
