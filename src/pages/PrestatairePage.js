@@ -32,7 +32,7 @@ const PrestatairePage = () => {
   }, [missionFromState]);
   // Chargement techniciens
   useEffect(() => {
-    fetch("http://localhost:3000/api/users/techniciens")
+    fetch(`${API_BASE_URL}/api/users/techniciens`)
       .then((res) => res.json())
       .then((data) => {
         const techniciens = data.map((user) => ({
@@ -47,7 +47,7 @@ const PrestatairePage = () => {
   }, []);
   // Chargement missions
   useEffect(() => {
-    fetch("http://localhost:3000/api/missions/prestataire", {
+    fetch(`${API_BASE_URL}/api/missions/prestataire`, {
       credentials: "include",
     })
       .then((res) => {
@@ -114,7 +114,7 @@ const PrestatairePage = () => {
       }
       // Requête vers ton API backend pour envoyer le mail
       const response = await fetch(
-        "http://localhost:3000/api/notifications/send-mission",
+        `${API_BASE_URL}/api/notifications/send-mission`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -179,7 +179,7 @@ const PrestatairePage = () => {
     }
     const url =
       editingId === null
-        ? "http://localhost:3000/api/missions"
+        ? `${API_BASE_URL}/api/missions`
         : `http://localhost:3000/api/missions/${editingId}`;
     const method = editingId === null ? "POST" : "PUT";
     fetch(url, {
@@ -211,7 +211,7 @@ const PrestatairePage = () => {
   };
   const deleteMission = (id) => {
     if (!window.confirm("Supprimer cette mission ?")) return;
-    fetch(`http://localhost:3000/api/missions/${id}`, {
+    fetch(`${API_BASE_URL}/api/missions/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -528,7 +528,7 @@ const PrestatairePage = () => {
                                             children: _jsxs("a", {
                                               href:
                                                 doc.url ??
-                                                `http://localhost:3000${doc.path}`,
+                                                `${API_BASE_URL}${doc.path}`,
                                               target: "_blank",
                                               rel: "noopener noreferrer",
                                               children: [
