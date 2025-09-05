@@ -94,7 +94,7 @@ const AdminPage: React.FC = () => {
 
   // Chargement techniciens
   useEffect(() => {
-    fetch("${API_BASE_URL}/api/users/techniciens``)
+    fetch("${API_BASE_URL}/api/users/techniciens`)
       .then((res) => res.json())
       .then((data: UserFromBackend[]) => {
         const techniciens = data.map((user) => ({
