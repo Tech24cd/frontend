@@ -2,6 +2,8 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const AdminPage = () => {
   const [missions, setMissions] = useState([]);
   const [intervenantsList, setIntervenantsList] = useState([]);
