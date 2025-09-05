@@ -59,7 +59,7 @@ const MissionsTable: React.FC = () => {
 
   // Fonction pour télécharger tous les fichiers liés à une mission
   const handleDownloadAllFiles = (missionId: number) => {
-    fetch(`http://localhost:3000/api/missions/${missionId}/download-zip`, {
+    fetch(`API_BASE_URL/api/missions/${missionId}/download-zip`, {
       method: "GET",
       credentials: "include",
     })
@@ -86,7 +86,7 @@ const MissionsTable: React.FC = () => {
 
   // Récupération des missions
   useEffect(() => {
-    fetch("http://localhost:3000/api/missions/prestataire", {
+    fetch("API_BASE_URL/api/missions/prestataire", {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -176,7 +176,7 @@ const MissionsTable: React.FC = () => {
     formData.append("missionId", missionId.toString());
 
     try {
-      const response = await fetch("http://localhost:3000/api/upload", {
+      const response = await fetch("API_BASE_URL/api/upload", {
         method: "POST",
         body: formData,
       });
