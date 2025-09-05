@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import illustrationImage from "../assets/images-2.png";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const LoginPage = () => {
   const [darkMode, setDarkMode] = useState(true);
