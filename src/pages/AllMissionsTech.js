@@ -24,7 +24,7 @@ const MissionsTable = () => {
   const navigate = useNavigate();
   // Fonction pour télécharger tous les fichiers liés à une mission
   const handleDownloadAllFiles = (missionId) => {
-    fetch(`http://localhost:3000/api/missions/${missionId}/download-zip`, {
+    fetch(`${API_BASE_URL}/api/missions/${missionId}/download-zip`, {
       method: "GET",
       credentials: "include",
     })
@@ -47,7 +47,7 @@ const MissionsTable = () => {
   const [filesByMission, setFilesByMission] = useState({});
   // Récupération des missions
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/missions`, {
+    fetch(`${API_BASE_URL}/api/missions/prestataire`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -205,7 +205,7 @@ const MissionsTable = () => {
         "aria-label": "Barre de navigation principale",
         children: [
           _jsx("button", {
-            onClick: () => navigate("/tech"),
+            onClick: () => navigate("/prestataire"),
             "aria-label": "Accueil",
             style: {
               padding: "0.5rem 1rem",
@@ -224,7 +224,7 @@ const MissionsTable = () => {
             children: "\uD83C\uDFE0 Accueil",
           }),
           _jsx("button", {
-            onClick: () => navigate("/tech"),
+            onClick: () => navigate("/prestataire"),
             "aria-label": "Ajouter une mission",
             style: {
               padding: "0.5rem 1rem",
@@ -391,7 +391,7 @@ const MissionsTable = () => {
                         children: [
                           _jsx("button", {
                             onClick: () =>
-                              navigate("/tech", {
+                              navigate("/prestataire", {
                                 state: { missionToEdit: m },
                               }),
                             "aria-label": `Éditer la mission ${m.title}`,
