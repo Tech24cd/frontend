@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import illustrationImage from "../assets/idem_logo.jpeg";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 interface User {
   id: string;
