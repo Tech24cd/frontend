@@ -94,7 +94,7 @@ const AdminPage: React.FC = () => {
 
   // Chargement techniciens
   useEffect(() => {
-    fetch("http://localhost:3000/api/users/techniciens")
+    fetch("${API_BASE_URL}/api/users/techniciens")
       .then((res) => res.json())
       .then((data: UserFromBackend[]) => {
         const techniciens = data.map((user) => ({
@@ -109,7 +109,7 @@ const AdminPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/users/prestataires", {
+    fetch("${API_BASE_URL}/api/users/prestataires", {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -120,7 +120,7 @@ const AdminPage: React.FC = () => {
   }, []);
   // Chargement missions
   useEffect(() => {
-    fetch("http://localhost:3000/api/missions/admin", {
+    fetch("${API_BASE_URL}/api/missions/admin", {
       credentials: "include",
     })
       .then((res) => {
@@ -193,7 +193,7 @@ const AdminPage: React.FC = () => {
 
       // Requête vers ton API backend pour envoyer le mail
       const response = await fetch(
-        "http://localhost:3000/api/notifications/send-mission",
+        "${API_BASE_URL}/api/notifications/send-mission",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -265,8 +265,8 @@ const AdminPage: React.FC = () => {
 
     const url =
       editingId === null
-        ? "http://localhost:3000/api/missions"
-        : `http://localhost:3000/api/missions/${editingId}`;
+        ? "${API_BASE_URL}/api/missions"
+        : `${API_BASE_URL}/api/missions/${editingId}`;
     const method = editingId === null ? "POST" : "PUT";
 
     fetch(url, {
@@ -299,7 +299,7 @@ const AdminPage: React.FC = () => {
 
   const deleteMission = (id: number) => {
     if (!window.confirm("Supprimer cette mission ?")) return;
-    fetch(`http://localhost:3000/api/missions/${id}`, {
+    fetch(`${API_BASE_URL}/api/missions/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -590,7 +590,7 @@ const AdminPage: React.FC = () => {
                           <li key={doc.id}>
                             <a
                               href={
-                                doc.url ?? `http://localhost:3000${doc.path}`
+                                doc.url ?? `${API_BASE_URL}${doc.path}`
                               }
                               target="_blank"
                               rel="noopener noreferrer"
