@@ -6,7 +6,7 @@ const TechnicienPage = () => {
   const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/missions", {
+    fetch(`${API_BASE_URL}/api/missions`, {
       credentials: "include",
     })
       .then((res) => {
