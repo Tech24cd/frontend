@@ -48,7 +48,7 @@ const MissionsTable = () => {
     const [filesByMission, setFilesByMission] = useState({});
     // Récupération des missions
     useEffect(() => {
-        fetch("http://localhost:3000/api/missions/admin", {
+        fetch(`${API_BASE_URL}/api/missions/admin", {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -124,7 +124,7 @@ const MissionsTable = () => {
         });
         formData.append("missionId", missionId.toString());
         try {
-            const response = await fetch("http://localhost:3000/api/upload", {
+            const response = await fetch(`${API_BASE_URL}/api/upload", {
                 method: "POST",
                 body: formData,
             });
