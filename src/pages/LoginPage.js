@@ -2,6 +2,8 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import illustrationImage from "../assets/images-2.png";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const LoginPage = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
